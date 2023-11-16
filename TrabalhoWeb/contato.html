@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+</head>
+<body>
+    <main>
+        <section>
+            <h1>Cadastro de Usuário</h1>
+           <strong><p>Preencha o formúlario abaixo para se cadastrar:</p>
+            <br><br>
+            <form id="form">
+                <label for="name">Nome:</label>
+                <input type="text" id="nome">
+                <br><br>
+                <label for="E-mail">E-mail:</label>
+                <input type="E-mail" name="E-mail" id="Email">
+                <br><br>
+                <label for="passaword">Senha:</label>
+                <input type="password" name="Senha" id="Senha">
+                <br><br>
+                <label for="Confirmar senha">Confirmar senha:</label>
+                <input type="password" name="Confirmarsenha" id="ConfirmarSenha">
+                <br><br>
+                <label for="Cidade">Cidade:</label>
+                <input type="Cidade" name="Cidade" id="Cidade">
+                <br><br>
+                <label for="Telefone">Telefone:</label>
+                <input type="text" name="Telefone" id="Telefone">
+            </strong>
+                <br><br>
+                <input class="btn1" type="reset" value="Limpar" id="Limpar">
+                <button type="submit">Cadastrar</button>
+            </form>
+        </section>
+    </main>
+</body>
+<style>
+    body{
+        background-color: black;
+        margin: 0px;
+        padding: 50px;
+    }
+    main{
+        background-color: red;
+        width: 90%;
+        padding: 50px;
+        margin: auto;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgb(37, 146, 150);
+        display: inline-block;
+    }
+    h1{
+        color: black;
+    }
+    label{
+        color: black;
+        margin-left: 50px;
+    }
+    input{
+        margin-left: 600px;
+        width: 450px;
+        height: 30px;
+        display: block;
+        background-color: darkslategray;
+    }
+    .btn1{
+        margin-left: 800px;
+        background-color: black;
+        color: white;
+        width: 150px;
+        height: 50px;
+        border-radius: 0px;
+        display: inline-block;
+    }
+    button{
+        margin-left: auto;
+        background-color: black;
+        color: white;
+        width: 150px;
+        height: 50px;
+        border-radius: 0px;
+        display: inline-block;
+    }
+</style>
+<script>
+    const form = document.getElementById('form');
+    const nomeInput = document.getElementById('nome');
+    const EmailInput = document.getElementById('Email');
+    const SenhaInput = document.getElementById('Senha');
+    const ConfirmarSenhaInput = document.getElementById('ConfirmarSenha');
+    const CidadeInput = document.getElementById('Cidade');
+    const TelefoneInput = document.getElementById('Telefone');
+    const messagetextarea = document.getElementById('cadastrar');
+    
+    form.addEventListener("submit",(event)=> {
+        event.preventDefault();
+
+        //verifica se o nome esta vazio
+        if (nomeInput.value ===""){
+            alert('Por favor, preencha seu nome')
+            return;
+        }
+
+        //Verifica se o email esta preencido e se é valido
+        if (EmailInput.value ==="" || !IsEmailvalid(EmailInput.value)){
+            alert('E-mail em branco,incorreto ou inexistente')
+            return;
+        }
+        
+
+        if(!validsenha(SenhaInput.value,8)){
+            alert('A senha precisa de no minimo 8 digitos');
+            return;
+        }
+        if(!validconfirmsenha(ConfirmarSenhaInput.value,8)){
+            alert('Confirme a senha de 8 digitos');
+            return;
+        }
+        if (CidadeInput.value ===""){
+            alert('Por favor, preencha sua cidade');
+            return;
+        }
+        if(!validcel(TelefoneInput.value,12)){
+            alert('Digite seu telefone com DDD');
+            return;
+        }
+       
+        form.submit();
+    });
+    //validar email
+
+    function IsEmailvalid(Email){
+        //cria uma regex para validar o email
+        const EmailRegex = new RegExp(
+            //usuario12@host.com.br
+            /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]{2,}$/
+        );
+        if(EmailRegex.test(Email)){
+            return true;
+        }
+        return false;
+    }
+    function validsenha(senha,minDigits){
+        if(senha.length >= minDigits){
+            //senha valida
+            return true;
+        }
+        // senha invalida
+        return false;
+    }
+        function validconfirmsenha(ConfirmarSenha,minNum){
+        if(ConfirmarSenha.length >= minNum){
+            //senha valida
+            return true;
+        }
+        // senha invalida
+        return false;
+    }
+    function validcel(Telefone,minDigits){
+        if(Telefone.length >= minDigits){
+            //numero valido
+            return true;
+        }
+        // numero invalido
+        return false;
+    }
+</script>
+</html>
