@@ -20,4 +20,4 @@ window.addEventListener("scroll", () =>{
     }else{
         menu.classList.remove("shrink");
     }
-})
+});
