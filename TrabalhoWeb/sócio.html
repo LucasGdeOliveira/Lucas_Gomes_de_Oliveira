@@ -4,12 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario</title>
+    <link rel="stylesheet" href="./sócio.css">
 </head>
 <body>
+   <footer>
+    <p>CLUBE ATHLETICO PR</p>
+   </footer>
+    <br><br>
     <main>
         <section>
-            <h1>Cadastro de Usuário</h1>
-           <strong><p>Preencha o formúlario abaixo para se cadastrar:</p>
+            <h1>Cadastro de sócio</h1>
+           <strong><p>Preencha o formúlario abaixo para se associar:</p>
             <br><br>
             <form id="form">
                 <label for="name">Nome:</label>
@@ -36,56 +41,15 @@
             </form>
         </section>
     </main>
-</body>
-<style>
-    body{
-        background-color: black;
-        margin: 0px;
-        padding: 50px;
-    }
-    main{
-        background-color: red;
-        width: 90%;
-        padding: 50px;
-        margin: auto;
-        border-radius: 10px;
-        box-shadow: 0px 0px 10px rgb(37, 146, 150);
-        display: inline-block;
-    }
-    h1{
-        color: black;
-    }
-    label{
-        color: black;
-        margin-left: 50px;
-    }
-    input{
-        margin-left: 600px;
-        width: 450px;
-        height: 30px;
-        display: block;
-        background-color: darkslategray;
-    }
-    .btn1{
-        margin-left: 800px;
-        background-color: black;
-        color: white;
-        width: 150px;
-        height: 50px;
-        border-radius: 0px;
-        display: inline-block;
-    }
-    button{
-        margin-left: auto;
-        background-color: black;
-        color: white;
-        width: 150px;
-        height: 50px;
-        border-radius: 0px;
-        display: inline-block;
-    }
-</style>
-<script>
+    <br><br>
+    <nav id="btnvoltar">
+        <ul>
+            <button><a href="./A.html">
+                <li>VOLTAR</li>
+            </a></button>
+        </ul>
+    </nav>
+    <script>
     const form = document.getElementById('form');
     const nomeInput = document.getElementById('nome');
     const EmailInput = document.getElementById('Email');
@@ -110,19 +74,22 @@
             return;
         }
         
-
+        // Verifica se a senha digitada tem pelo menos 8 digitos
         if(!validsenha(SenhaInput.value,8)){
             alert('A senha precisa de no minimo 8 digitos');
             return;
         }
-        if(!validconfirmsenha(ConfirmarSenhaInput.value,8)){
+        // Verifica se a confirmacao da senha digitada tem pelo menos 8 digitos
+         if(!validconfirmsenha(ConfirmarSenhaInput.value,8)){
             alert('Confirme a senha de 8 digitos');
             return;
         }
+        //verifica se o campo cidade está vazio
         if (CidadeInput.value ===""){
             alert('Por favor, preencha sua cidade');
             return;
         }
+        // exige 12 digitos para o telefone
         if(!validcel(TelefoneInput.value,12)){
             alert('Digite seu telefone com DDD');
             return;
@@ -167,5 +134,6 @@
         // numero invalido
         return false;
     }
-</script>
+    </script>
+</body>
 </html>
